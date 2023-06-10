@@ -6,7 +6,7 @@
 
     <div style="display: flex; flex-direction: column; gap: 50px">
       <div style="display: flex; gap: 30px; margin-top: 35px; flex-direction: column; justify-content: center; align-items: center;">
-        <div><h1>EMPLEADOS</h1></div>
+        <h1 id="tituloTiendas">TIENDAS</h1>
         <Empleados />
       </div>
     </div>
@@ -49,6 +49,15 @@ export default {
 </script>
 
 <style>
+#tituloTiendas {
+  text-align: center;
+  color: #333;
+  font-size: 48px;
+  font-family: "Arial", sans-serif;
+  text-shadow: 2px 2px 4px rgba(1, 9, 10, 0.7);
+  padding: 10px;
+}
+
 .MenuClass {
   height: auto;
   max-height: 100%;

@@ -11,10 +11,6 @@
         class="search-bar"
         @keyup.enter="buscarTienda"
       ></v-text-field>
-
-      <!-- <v-btn id="addTienda" @click="agregarTienda()" color="primary" dark>
-        Añadir tienda
-      </v-btn> -->
     </div>
 
     <div>
