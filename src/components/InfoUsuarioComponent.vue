@@ -255,21 +255,24 @@ div[data-v-2c902354] {
     align-items: center;
   }
   .divInfoLibrosCliente {
-    width: 60%;
+    width: 80%;
     margin-top: 3%;
     margin-left: 3% !important;
+  }
+  .divAjustes {
+    width: 90%;
   }
 }
 @media (max-width: 700px) {
   .divInfoLibrosCliente {
-    width: 60%;
+    width: 90%;
     margin-top: 3%;
     margin-left: 5% !important;
   }
 }
 @media (max-width: 400px) {
   .divInfoLibrosCliente {
-    width: 60%;
+    width: 90%;
     margin-top: 3%;
     margin-left: 10% !important;
   }

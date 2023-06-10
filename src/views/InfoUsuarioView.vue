@@ -9,7 +9,7 @@
         <MenuLateral></MenuLateral>
       </div>
       <div class="div2">
-        <div style="gap: 30px; margin-top: 35px; margin-bottom: 30px">
+        <div class="divInfoUser" style="gap: 30px; margin-top: 35px; margin-bottom: 30px">
           <InfoUsuario></InfoUsuario>
         </div>
       </div>
@@ -96,6 +96,13 @@ div[data-v-b680aa46] {
 @media (max-width: 1125px) {
   .div2 {
     display: flex;
+  }
+}
+@media (max-width: 960px) {
+  .divInfoUser{
+    gap: 30px; 
+    margin-top: 0px !important; 
+    margin-bottom: 30px
   }
 }
 </style>
