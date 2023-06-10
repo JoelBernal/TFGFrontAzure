@@ -6,7 +6,7 @@
 
     <div style="display: flex; flex-direction: column; gap: 50px">
       <div style="display: flex; gap: 30px; margin-top: 35px; flex-direction: column; justify-content: center; align-items: center;">
-        <h1 id="tituloTiendas">TIENDAS</h1>
+        <h1 id="tituloTiendas">EMPLEADOS</h1>
         <Empleados />
       </div>
     </div>

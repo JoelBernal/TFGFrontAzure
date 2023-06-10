@@ -1,11 +1,13 @@
 <template>
-  <div>
+  <div style="background-color: white;">
     <div class="divNavbar">
       <Navbar />
     </div>
 
     <div>
       <Login></Login>
+    </div>
+    <div>
     </div>
   </div>
 </template>
