@@ -1,25 +1,23 @@
 <template>
-  <div style="height: 100vh;">
+  <div style="height: 100%">
     <div>
       <Navbar />
     </div>
 
-    <div style="display: flex; flex-direction: column;">
+    <div style="display: flex; flex-direction: column">
       <div class="MenuClass">
         <MenuLateral></MenuLateral>
       </div>
-      <div style="display:flex; flex-direction:column; gap: 50px; margin-left: 15%; margin-bottom: 4%;">
-        <div style=" gap: 30px; margin-top: 35px; margin-bottom: 30px; ">
+      <div class="div2">
+        <div style="gap: 30px; margin-top: 35px; margin-bottom: 30px">
           <InfoUsuario></InfoUsuario>
         </div>
       </div>
       <div>
-        <Footer/>
+        <Footer />
       </div>
     </div>
-    <div>
-      
-    </div>
+    <div></div>
   </div>
 </template>
 
@@ -29,7 +27,6 @@ import MenuLateral from "../components/MenuLateralComponent.vue";
 import InfoUsuario from "../components/InfoUsuarioComponent.vue";
 import Footer from "../components/FooterComponent.vue";
 
-
 export default {
   name: "InfoUsuarioView",
   components: {
@@ -37,14 +34,13 @@ export default {
     InfoUsuario,
     MenuLateral,
     Footer,
-    
   },
   props: {
     source: String,
   },
 };
 </script>
- 
+
 <style scoped>
 .MenuClass {
   height: auto;
@@ -52,12 +48,54 @@ export default {
 }
 
 div[data-v-2c902354] {
-    display: block !important;
+  display: block !important;
 }
 
 div[data-v-b680aa46] {
-    display: flex !important;
-    flex-direction: column !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+.div2 {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin-left: 15%;
+  margin-bottom: 4%;
+}
+@media (max-width: 1670px) {
+  .div2 {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin-left: 20%;
+    margin-bottom: 4%;
+  }
+}
+@media (max-width: 1350px) {
+  .div2 {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin-left: 25%;
+    margin-bottom: 4%;
+  }
+}
+
+@media (max-width: 1264px) {
+  .div2 {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin-left: 3% !important;
+    margin-bottom: 4%;
+  }
+}
+
+
+
+@media (max-width: 1125px) {
+  .div2 {
+    display: flex;
+  }
 }
 </style>
- 

@@ -52,11 +52,11 @@
           </v-col>
         </v-row>
       </v-card-text>
-      <v-card-actions>
+      <v-card-actions class="botonesEdicion">
         <v-spacer></v-spacer>
         <template v-if="!editing">
           <v-btn color="#80461b" @click="editProfile">Editar</v-btn>
-          <v-btn color="red" @click="logOut">Cerrar Sesión</v-btn>
+          <v-btn margin-left="10px" color="red" @click="logOut">Cerrar Sesión</v-btn>
         </template>
         <template v-else>
           <v-btn color="#80461b" @click="saveProfile()">Guardar</v-btn>
@@ -239,11 +239,50 @@ div[data-v-2c902354] {
 .divInfoLibrosCliente {
   width: 40%;
   margin-left: 30px;
+  margin-right: 30px;
 }
 
 .divComponenteGeneral[data-v-0b2fb5f4] {
   padding-left: 10%;
   width: 100%;
   flex-direction: column !important;
+}
+
+@media (max-width: 970px) {
+  .divComponenteGeneral {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .divInfoLibrosCliente {
+    width: 60%;
+    margin-top: 3%;
+    margin-left: 3% !important;
+  }
+}
+@media (max-width: 700px) {
+  .divInfoLibrosCliente {
+    width: 60%;
+    margin-top: 3%;
+    margin-left: 5% !important;
+  }
+}
+@media (max-width: 400px) {
+  .divInfoLibrosCliente {
+    width: 60%;
+    margin-top: 3%;
+    margin-left: 10% !important;
+  }
+}
+@media (max-width: 410px) {
+  .v-card__actions {
+    display: flex;
+    flex-direction: column;
+  }
+  button {
+    margin-bottom: 10px;
+    margin-left: 0px !important;
+  }
+
 }
 </style>

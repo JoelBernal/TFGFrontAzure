@@ -3,7 +3,6 @@
     <div class="divNavbar">
       <Navbar />
     </div>
-
     <div>
       <Login></Login>
     </div>
