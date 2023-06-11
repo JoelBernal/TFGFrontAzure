@@ -93,7 +93,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90vh; /* Ajusta la altura según tus necesidades */
+  height: 84vh; /* Ajusta la altura según tus necesidades */
 }
 
 .libros-form {
@@ -149,8 +149,14 @@ export default {
 
 @media screen and (max-width: 1600px) {
   .libros-form {
-    margin-left: 35%;
+    
   }
+  .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh; /* Ajusta la altura según tus necesidades */
+}
 }
 
 @media screen and (max-width: 1264px) {
@@ -169,7 +175,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90vh;
+    height: 107vh;
     margin-left: 0% !important;
   }
 }

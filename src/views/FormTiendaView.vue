@@ -7,7 +7,7 @@
   
       <div class="divPrincipal">
         <div class="MenuClass">
-          <MenuLateral></MenuLateral>
+          <MenuLateralAdmin/>
         </div>
         <div class="divFormTiendas" style="display:flex; flex-direction:column; gap: 50px; margin-left: 15%">
             <tiendasForm/>
@@ -18,7 +18,7 @@
   
   <script>
   import Navbar from "../components/NavbarComponent.vue";
-  import MenuLateral from "../components/MenuLateralComponent.vue";
+  import MenuLateralAdmin from "../components/MenuLateralAdminComponent.vue";
   import tiendasForm from "../components/tiendasFormComponent.vue";
   
   export default {
@@ -26,7 +26,7 @@
     components: {
       Navbar,
       tiendasForm,
-      MenuLateral,
+      MenuLateralAdmin,
     },
     props: {
       source: String,

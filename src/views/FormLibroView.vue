@@ -5,7 +5,7 @@
       <Navbar />
     </div>
 
-    <div class="menuPrincipalForm">
+    <div class="divPrincipal">
       <div class="MenuClass">
         <MenuLateralAdmin/>
       </div>
@@ -49,10 +49,14 @@ export default {
     margin-left: 0% !important
   }
 
-  .menuPrincipalForm {
+  .divPrincipal {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.MenuClass {
+  height: 113vh;
+  max-height: 100%;
 }
 }
 
