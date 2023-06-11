@@ -9,7 +9,7 @@
         <div class="MenuClass">
           <MenuLateralAdmin/>
         </div>
-        <div class="divFormTiendas" style="display:flex; flex-direction:column; gap: 50px; margin-left: 15%">
+        <div class="divFormTiendas" style="display:flex; flex-direction:column; gap: 50px; width: 100%;">
             <tiendasForm/>
         </div>
       </div>
@@ -43,13 +43,29 @@
   .divPrincipal {
     display: flex;
   }
+
+  .divFormTiendas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   @media screen and (max-width: 1264px) {
   .divFormTiendas {
     display: flex;
     align-items: center;
     justify-content: center;
-
+    margin-left: 0% !important;
   }
+  .divPrincipal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .MenuClass {
+  height: 94vh;
+  max-height: 100%;
+}
 }
 
 @media screen and (max-width: 560px) {

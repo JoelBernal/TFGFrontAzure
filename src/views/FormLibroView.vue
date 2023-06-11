@@ -55,7 +55,13 @@ export default {
   align-items: center;
 }
 .MenuClass {
-  height: 113vh;
+  height: 94vh;
+  max-height: 100%;
+}
+}
+@media screen and (max-width: 736px) {
+.MenuClass {
+  height: 112vh;
   max-height: 100%;
 }
 }

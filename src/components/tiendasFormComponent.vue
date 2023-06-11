@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="tiendas-form">
-      <h2 class="form-title">Añadir Tienda</h2>
+      <h2 style="" class="form-title">Añadir Tienda</h2>
       <form @submit.prevent="submitForm" class="form">
         <div class="form-row">
           <div class="form-group">
@@ -144,6 +144,9 @@ export default {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .form {
