@@ -236,6 +236,10 @@ export default {
   cursor: pointer;
 }
 
+.v-overlay {
+  display: none;
+}
+
 @media (max-width: 1000px) {
   .menuBotones {
     display: none;
