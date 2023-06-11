@@ -8,8 +8,9 @@
         solo
         dense
         append-icon="mdi-magnify"
+        @click:append="buscarTienda"
         class="search-bar"
-        @keyup.enter="buscarTienda"
+        @input="buscarTienda"
       ></v-text-field>
     </div>
 

@@ -25,9 +25,9 @@
             </v-form>
           </v-card-text>
 
-          <v-snackbar v-model="snackbar" color="white">
+          <v-snackbar v-model="snackbar" color="#80461b">
             <b> {{ snackbarMessage }} </b>
-            <v-btn color="#80461b" text @click="snackbar = false">
+            <v-btn color=white text @click="snackbar = false">
               Cerrar
             </v-btn>
           </v-snackbar>

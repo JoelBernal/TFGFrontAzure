@@ -8,8 +8,9 @@
         solo
         dense
         append-icon="mdi-magnify"
+        @click:append="buscarTienda"
         class="search-bar"
-        @keyup.enter="buscarTienda"
+        @input="buscarTienda"
       ></v-text-field>
     </div>
 
@@ -60,7 +61,7 @@
             </v-card-text>
 
             <v-card-actions>
-              <v-btn color="red" @click="deleteTienda(item.id)">Borrar</v-btn>
+              <v-btn color="red" >Borrar</v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -99,6 +100,9 @@ export default {
     deleteTienda(id) {
       this.eliminarTienda(id);
     },
+
+
+
   },
 
   computed: {

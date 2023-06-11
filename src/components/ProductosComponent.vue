@@ -8,6 +8,7 @@
         solo
         dense
         append-icon="mdi-magnify"
+        @click:append="buscarLibro"
         class="search-bar"
         @input="buscarLibro"
       ></v-text-field>
@@ -173,6 +174,9 @@
               <v-btn color="orange" @click="comprarLibro(selectedBook)"
                 >Comprar</v-btn
               >
+              <v-btn color="red" @click.stop="volverMenu(selectedBook)"
+                >Cerrar</v-btn
+              >
             </v-card-actions>
           </v-col>
         </v-row>
@@ -231,6 +235,9 @@ export default {
 
           this.categoryName = "Error obteniendo nombre de categoría";
         });
+    },
+    async volverMenu() {
+      this.showPopup = false;
     },
 
     ...mapActions(["LibrosClientesPost"]),

@@ -31,8 +31,11 @@
           <label for="imagen" class="form-label">Imagen:</label>
           <input type="text" id="categoria" v-model="Imagen" class="form-input" required>
         </div>
-        <button type="submit" class="submit-button">Añadir</button>
+        <button type="submit" class="submit-button" >Añadir</button>
       </form>
+
+
+      
     </div>
   </div>
 </template>
@@ -76,7 +79,11 @@ export default {
       
       // También puedes ocultar el formulario si deseas
       this.$emit('cerrar-formulario');
-    }
+    },
+    // submitbtn(){
+    //   this.$router.push('/productosadmin');
+    // }
+
   }
 };
 </script>
@@ -86,7 +93,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Ajusta la altura según tus necesidades */
+  height: 90vh; /* Ajusta la altura según tus necesidades */
 }
 
 .libros-form {
@@ -139,4 +146,49 @@ export default {
 .submit-button:active {
   transform: scale(0.9);
 }
+
+@media screen and (max-width: 1600px) {
+  .libros-form {
+    margin-left: 35%;
+  }
+}
+
+@media screen and (max-width: 1264px) {
+  .libros-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0% !important;
+  }
+}
+
+
+@media screen and (max-width: 735px) {
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    margin-left: 0% !important;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .form-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .libros-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0% !important;
+    width: 350px;
+  }
+}
+
 </style>

@@ -5,11 +5,11 @@
         <Navbar />
       </div>
   
-      <div style="display: flex; justify-content: center;">
+      <div class="divPrincipal">
         <div class="MenuClass">
           <MenuLateral></MenuLateral>
         </div>
-        <div style="display:flex; flex-direction:column; gap: 50px; margin-left: 15%">
+        <div class="divFormTiendas" style="display:flex; flex-direction:column; gap: 50px; margin-left: 15%">
             <tiendasForm/>
         </div>
       </div>
@@ -34,10 +34,39 @@
   };
   </script>
    
-  <style>
+  <style scoped>
   .MenuClass {
     height: auto;
     max-height: 100%;
   }
+
+  .divPrincipal {
+    display: flex;
+  }
+  @media screen and (max-width: 1264px) {
+  .divFormTiendas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .divFormTiendas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0% !important
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .divPrincipal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
   </style>
    

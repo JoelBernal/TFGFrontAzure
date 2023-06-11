@@ -6,34 +6,74 @@
         <div class="form-row">
           <div class="form-group">
             <label for="comunidad" class="form-label">Comunidad:</label>
-            <input type="text" id="comunidad" v-model="comunidad" class="form-input" required>
+            <input
+              type="text"
+              id="comunidad"
+              v-model="comunidad"
+              class="form-input"
+              required
+            />
           </div>
           <div class="form-group">
             <label for="localidad" class="form-label">Localidad:</label>
-            <input type="text" id="localidad" v-model="localidad" class="form-input" required>
+            <input
+              type="text"
+              id="localidad"
+              v-model="localidad"
+              class="form-input"
+              required
+            />
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
             <label for="calle" class="form-label">Calle:</label>
-            <input type="text" id="calle" v-model="calle" class="form-input" required>
+            <input
+              type="text"
+              id="calle"
+              v-model="calle"
+              class="form-input"
+              required
+            />
           </div>
           <div class="form-group">
             <label for="codigoPostal" class="form-label">Codigo Postal:</label>
-            <input type="text" id="codigoPostal" v-model="codigoPostal" class="form-input" required>
+            <input
+              type="text"
+              id="codigoPostal"
+              v-model="codigoPostal"
+              class="form-input"
+              required
+            />
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
             <label for="trabajadores" class="form-label">Trabajadores:</label>
-            <input type="text" id="trabajadores" v-model="trabajadores" class="form-input" required>
+            <input
+              type="text"
+              id="trabajadores"
+              v-model="trabajadores"
+              class="form-input"
+              required
+            />
           </div>
           <div class="form-group">
-            <label for="horarioAtencion" class="form-label">Horario de atención:</label>
-            <input type="text" id="horarioAtencion" v-model="horarioAtencion" class="form-input" required>
+            <label for="horarioAtencion" class="form-label"
+              >Horario de atención:</label
+            >
+            <input
+              type="text"
+              id="horarioAtencion"
+              v-model="horarioAtencion"
+              class="form-input"
+              required
+            />
           </div>
         </div>
-        <button type="submit" class="submit-button">Añadir</button>
+        <button type="submit" class="submit-button" @click="submitbtn()">
+          Añadir
+        </button>
       </form>
     </div>
   </div>
@@ -43,39 +83,43 @@
 export default {
   data() {
     return {
-      comunidad: '',
-      localidad: '',
-      calle: '',
-      codigoPostal: '',
-      trabajadores: '',
-      horarioAtencion: '',
+      comunidad: "",
+      localidad: "",
+      calle: "",
+      codigoPostal: "",
+      trabajadores: "",
+      horarioAtencion: "",
     };
   },
   methods: {
     submitForm() {
       // Aquí puedes agregar la lógica para enviar el formulario o realizar otras acciones
       // Por ejemplo, puedes llamar a una acción de Vuex para agregar la tienda al estado global
-      this.$store.dispatch('agregarTienda', {
+      this.$store.dispatch("agregarTienda", {
         comunidad: this.comunidad,
         localidad: this.localidad,
         calle: this.calle,
         codigoPostal: this.codigoPostal,
         trabajadores: this.trabajadores,
-        horarioAtencion: this.horarioAtencion
+        horarioAtencion: this.horarioAtencion,
       });
-      
+
       // Una vez que la tienda se ha agregado correctamente, puedes restablecer los campos del formulario
-      this.comunidad = '';
-      this.localidad = '';
-      this.calle = '';
-      this.codigoPostal = '';
-      this.trabajadores = '';
-      this.horarioAtencion = '';
-      
+      this.comunidad = "";
+      this.localidad = "";
+      this.calle = "";
+      this.codigoPostal = "";
+      this.trabajadores = "";
+      this.horarioAtencion = "";
+
       // También puedes ocultar el formulario si deseas
-      this.$emit('cerrar-formulario');
-    }
-  }
+      this.$emit("cerrar-formulario");
+    },
+
+    // submitbtn(){
+    //   this.$router.push('/tiendasadmin');
+    // }
+  },
 };
 </script>
 
@@ -84,7 +128,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 90vh;
 }
 
 .tiendas-form {
@@ -148,5 +192,52 @@ export default {
 
 .submit-button:active {
   transform: scale(0.9);
+}
+
+@media screen and (max-width: 1650px) {
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    margin-left: 15%;
+  }
+}
+
+@media screen and (max-width: 1264px) {
+  .tiendas-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0% !important;
+  }
+}
+
+@media screen and (max-width: 735px) {
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    margin-left: 0% !important;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .form-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .tiendas-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0% !important;
+    width: 300px;
+  }
 }
 </style>

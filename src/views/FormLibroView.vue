@@ -5,11 +5,11 @@
       <Navbar />
     </div>
 
-    <div style="display: flex;">
+    <div class="menuPrincipalForm">
       <div class="MenuClass">
-        <MenuLateral></MenuLateral>
+        <MenuLateralAdmin/>
       </div>
-      <div style="display:flex; flex-direction:column; gap: 50px; margin-left: 15%">
+      <div class="divFormLibro" style="display:flex; flex-direction:column; gap: 50px; margin-left: 15%">
           <librosForm/>
       </div>
     </div>
@@ -18,7 +18,7 @@
 
 <script>
 import Navbar from "../components/NavbarComponent.vue";
-import MenuLateral from "../components/MenuLateralComponent.vue";
+import MenuLateralAdmin from "../components/MenuLateralAdminComponent.vue";
 import librosForm from "../components/librosFormComponent.vue";
 
 export default {
@@ -26,7 +26,7 @@ export default {
   components: {
     Navbar,
     librosForm,
-    MenuLateral,
+    MenuLateralAdmin,
   },
   props: {
     source: String,
@@ -34,10 +34,27 @@ export default {
 };
 </script>
  
-<style>
+<style scoped>
 .MenuClass {
   height: auto;
   max-height: 100%;
 }
+
+.menuPrincipalForm {
+  display: flex;
+}
+
+@media screen and (max-width: 1264px) {
+  .divFormLibro {
+    margin-left: 0% !important
+  }
+
+  .menuPrincipalForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+}
+
 </style>
  

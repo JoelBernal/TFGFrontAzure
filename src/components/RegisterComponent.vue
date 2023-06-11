@@ -82,9 +82,9 @@
       </v-col>
     </v-row>
 
-    <v-snackbar v-model="snackbar" color="white">
+    <v-snackbar v-model="snackbar" color="#80461b">
       <b id="message"> {{ snackbarMessage }} </b>
-      <v-btn color="#80461b" text @click="snackbar = false"> Cerrar </v-btn>
+      <v-btn color="white" text @click="snackbar = false"> Cerrar </v-btn>
     </v-snackbar>
   </v-container>
 </template>

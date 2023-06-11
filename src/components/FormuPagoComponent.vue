@@ -12,15 +12,15 @@
           </div>
           <div class="form-group">
             <label for="cardNumber">Número de tarjeta</label>
-            <input id="cardNumber" v-model="cardNumber" type="text" required class="input-field">
+            <input id="cardNumber" v-model="cardNumber" type="text" pattern="^[0-9]{16}$" required class="input-field">
           </div>
           <div class="form-group">
             <label for="expiryDate">Fecha de vencimiento</label>
-            <input id="expiryDate" v-model="expiryDate" type="text" required class="input-field">
+            <input id="expiryDate" v-model="expiryDate" type="text" pattern="^(0[1-9]|1[0-2])/([0-9]{4}|[0-9]{2})$" required class="input-field">
           </div>
           <div class="form-group">
             <label for="cvv">CVV</label>
-            <input id="cvv" v-model="cvv" type="text" required class="input-field">
+            <input id="cvv" v-model="cvv" type="text" pattern="^[0-9]{3,4}$" required class="input-field">
           </div>
           <button type="submit" class="pay-button" @click="IrGracias()">Pagar</button>
         </form>
@@ -44,13 +44,29 @@ export default {
       'clearCart' 
     ]),
     async IrGracias() {
-      await this.$store.dispatch('submitOrder');
-      this.clearCart();
-      this.$router.push('/Gracias');
+      if(this.isValid()) {
+        await this.$store.dispatch('submitOrder');
+        this.clearCart();
+        this.$router.push('/Gracias');
+      } else {
+        alert("Por favor, verifique que todos los campos son correctos.");
+      }
+    },
+    isValid() {
+      const regexCardNumber = new RegExp('^[0-9]{16}$');
+      const regexExpiryDate = new RegExp('^(0[1-9]|1[0-2])/([0-9]{4}|[0-9]{2})$');
+      const regexCvv = new RegExp('^[0-9]{3,4}$');
+
+      return regexCardNumber.test(this.cardNumber) && 
+        regexExpiryDate.test(this.expiryDate) && 
+        regexCvv.test(this.cvv) && 
+        this.cardName.length > 0;
     }
   },
 };
 </script>
+
+
 
 <style scoped>
 .payment-form {

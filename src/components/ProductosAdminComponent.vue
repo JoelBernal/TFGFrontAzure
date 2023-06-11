@@ -8,6 +8,7 @@
         solo
         dense
         append-icon="mdi-magnify"
+        @click:append="buscarLibro"
         class="search-bar"
         @input="buscarLibro"
       ></v-text-field>
@@ -74,9 +75,8 @@
             style="margin-bottom: 30px; border: 2px solid black"
             class="mx-auto"
             max-width="400"
-            width ="400px"
+            width="400px"
             tile
-            
           >
             <v-img
               class="align-end text-white"
@@ -182,6 +182,9 @@
               <v-btn color="orange" @click.stop="comprarLibro(selectedBook)"
                 >Comprar</v-btn
               >
+              <v-btn color="red" @click.stop="volverMenu(selectedBook)"
+                >Cerrar</v-btn
+              >
             </v-card-actions>
           </v-col>
         </v-row>
@@ -192,7 +195,7 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 export default {
   name: "ProductosAdminComponent",
   components: {},
@@ -250,30 +253,32 @@ export default {
     ...mapActions(["LibrosClientesPost"]),
 
     async comprarLibro(selectedBook) {
-  try {
-    const idCliente = +Cookies.get('idUsuario');
-    console.log('idCliente:', idCliente);
+      try {
+        const idCliente = +Cookies.get("idUsuario");
+        console.log("idCliente:", idCliente);
 
-    if(isNaN(idCliente)){
-      this.$router.push('/login');
-    }
+        if (isNaN(idCliente)) {
+          this.$router.push("/login");
+        }
 
-    const libroCliente = {
-      
-      idCliente: idCliente || this.$props.IdCliente,
-      idlibro: selectedBook.id,
-      nombreLibro: selectedBook.titulo,
-    };
-    console.log('libroCliente:', libroCliente);
-    this.$router.push('/checkout');
-    await this.LibrosClientesPost(libroCliente);
+        const libroCliente = {
+          idCliente: idCliente || this.$props.IdCliente,
+          idlibro: selectedBook.id,
+          nombreLibro: selectedBook.titulo,
+        };
+        console.log("libroCliente:", libroCliente);
+        this.$router.push("/checkout");
+        await this.LibrosClientesPost(libroCliente);
 
+        // Resto del código...
+      } catch (error) {
+        console.error("Error al comprar el libro:", error);
+      }
+    },
 
-    // Resto del código...
-  } catch (error) {
-    console.error("Error al comprar el libro:", error);
-  }
-},
+    async volverMenu() {
+      this.showPopup = false;
+    },
 
     // Borrar Libro
     deleteLibro(id) {
@@ -293,8 +298,6 @@ export default {
         (l) => l.categoriaId === categoriaId
       );
     },
-
-
   },
 
   computed: {
@@ -394,7 +397,6 @@ export default {
   .filtros {
     margin-left: 50px;
   }
-  
 }
 
 @media (max-width: 900px) {
@@ -404,7 +406,6 @@ export default {
     flex-direction: column;
     margin-left: 0px;
   }
-  
 
   #orden {
     margin: 10px;
