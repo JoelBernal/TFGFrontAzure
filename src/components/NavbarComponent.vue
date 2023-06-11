@@ -1,5 +1,5 @@
 <template>
-  <v-app style="z-index: 2;">
+  <v-app style="z-index: 2">
     <v-app-bar
       style="display: flex; width: 100%; left: 0px; z-index: 9999"
       color="green"
@@ -8,12 +8,15 @@
       dark
     >
       <img
+        @click="goToHome"
         class="logoImgNavBar"
         src="../../public/Logo.png"
         alt=""
       />
       <v-app-bar-title class="tituloNavBar"
-        >LIBRERIAS PACO</v-app-bar-title
+        ><p style="margin-bottom: 0px !important" @click="goToHome">
+          LIBRERIAS PACO
+        </p></v-app-bar-title
       >
       <v-toolbar-items
         style="gap: 0px; width: 70%"
@@ -183,6 +186,12 @@ export default {
         });
       }
     },
+
+    goToHome() {
+      if (this.$route.path !== "/home") {
+        this.$router.push("/home");
+      }
+    },
   },
   mounted() {
     this.chechUser(this.usuario);
@@ -229,6 +238,7 @@ export default {
   font-size: 37px;
   font-family: serif;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 .menuDesplegables {
@@ -250,7 +260,7 @@ export default {
   }
 }
 @media (max-width: 400px) {
-  .tituloNavBar{
+  .tituloNavBar {
     font-size: 20px;
   }
   .logoImgNavBar {
