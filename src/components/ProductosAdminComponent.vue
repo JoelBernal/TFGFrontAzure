@@ -416,6 +416,7 @@ export default {
     cols: 6 !important;
   }
 }
+
 @media (max-width: 500px) {
   #tarjeta {
     width: 300px !important;

@@ -43,6 +43,7 @@ export default {
   max-width: 100%;
   position: relative;
   background-color: antiquewhite;
+  z-index: 1;
 }
 
 .container {

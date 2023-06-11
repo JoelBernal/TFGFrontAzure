@@ -11,53 +11,54 @@
         class="search-bar"
         @input="buscarLibro"
       ></v-text-field>
+      <div class="menuDobleFiltros">
+        <v-menu offset-y>
+          <template v-slot:activator="{ on }">
+            <v-btn id="orden" v-on="on">Ordenar por precio</v-btn>
+          </template>
+          <v-list>
+            <v-list-item
+              @click="
+                OrdenarPrecioPorDefecto();
+                dialog = true;
+              "
+            >
+              <v-list-item-title>Por defecto</v-list-item-title>
+            </v-list-item>
+            <v-list-item
+              @click="
+                OrdenarPrecioMenorMayor();
+                dialog = true;
+              "
+            >
+              <v-list-item-title>Mayor a menor</v-list-item-title>
+            </v-list-item>
+            <v-list-item
+              @click="
+                OrdenarPrecioMayorMenor();
+                dialog = true;
+              "
+            >
+              <v-list-item-title>Menor a mayor</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
 
-      <v-menu offset-y>
-        <template v-slot:activator="{ on }">
-          <v-btn id="orden" v-on="on">Ordenar por precio</v-btn>
-        </template>
-        <v-list>
-          <v-list-item
-            @click="
-              OrdenarPrecioPorDefecto();
-              dialog = true;
-            "
-          >
-            <v-list-item-title>Por defecto</v-list-item-title>
-          </v-list-item>
-          <v-list-item
-            @click="
-              OrdenarPrecioMenorMayor();
-              dialog = true;
-            "
-          >
-            <v-list-item-title>Mayor a menor</v-list-item-title>
-          </v-list-item>
-          <v-list-item
-            @click="
-              OrdenarPrecioMayorMenor();
-              dialog = true;
-            "
-          >
-            <v-list-item-title>Menor a mayor</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
-
-      <v-menu offset-y>
-        <template v-slot:activator="{ on }">
-          <v-btn id="orden" v-on="on">Categoría</v-btn>
-        </template>
-        <v-list v-if="categoriasLoaded">
-          <v-list-item
-            v-for="categoria in categorias"
-            :key="categoria.id"
-            @click="filtrarPorCategoria(categoria.id)"
-          >
-            <v-list-item-title>{{ categoria.nombre }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
+        <v-menu offset-y>
+          <template v-slot:activator="{ on }">
+            <v-btn id="orden" v-on="on">Categoría</v-btn>
+          </template>
+          <v-list v-if="categoriasLoaded">
+            <v-list-item
+              v-for="categoria in categorias"
+              :key="categoria.id"
+              @click="filtrarPorCategoria(categoria.id)"
+            >
+              <v-list-item-title>{{ categoria.nombre }}</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </div>
     </div>
 
     <div>
@@ -74,7 +75,7 @@
             style="margin-bottom: 30px; border: 2px solid black"
             class="mx-auto"
             max-width="400"
-            width ="400px"
+            width="400px"
             tile
           >
             <v-img
@@ -154,8 +155,20 @@
                 {{ selectedBook.fechaPublicacion }}
               </div>
             </v-card-text>
-            
-            <div class="privacy-policy" style="font-size: 10px; text-align: center; padding: 40px;">Política de Privacidad: En nuestra plataforma, nos comprometemos a proteger tu privacidad y tus datos personales. Al hacer clic en el botón "Añadir a la Cesta" a continuación, estás aceptando nuestras políticas de privacidad. Toda la información que nos proporciones será tratada de forma confidencial y utilizada únicamente para mejorar tu experiencia en nuestro sitio. Para obtener más detalles sobre cómo manejamos tus datos, te invitamos a leer nuestra política de privacidad.</div>
+
+            <div
+              class="privacy-policy"
+              style="font-size: 10px; text-align: center; padding: 40px"
+            >
+              Política de Privacidad: En nuestra plataforma, nos comprometemos a
+              proteger tu privacidad y tus datos personales. Al hacer clic en el
+              botón "Añadir a la Cesta" a continuación, estás aceptando nuestras
+              políticas de privacidad. Toda la información que nos proporciones
+              será tratada de forma confidencial y utilizada únicamente para
+              mejorar tu experiencia en nuestro sitio. Para obtener más detalles
+              sobre cómo manejamos tus datos, te invitamos a leer nuestra
+              política de privacidad.
+            </div>
             <v-card-actions>
               <v-btn color="orange" @click="comprarLibro(selectedBook)"
                 >Comprar</v-btn
@@ -169,7 +182,7 @@
 </template>
 <script>
 import { mapState, mapActions } from "vuex";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 
 export default {
   name: "ProductosComponent",
@@ -205,47 +218,43 @@ export default {
     ...mapActions(["filterLibros"]),
     ...mapActions(["fetchCategorias"]),
 
-    verDetalle(item,) {
-   
+    verDetalle(item) {
       this.selectedBook = item;
       this.showPopup = true;
-      
+
       this.getCategoryName(this.selectedBook.categoriaId)
-        .then(Nombre  => {
-            this.categoryName = Nombre ;
+        .then((Nombre) => {
+          this.categoryName = Nombre;
         })
-        .catch(err => {
-            console.log(err);
-            
-            this.categoryName = 'Error obteniendo nombre de categoría';
+        .catch((err) => {
+          console.log(err);
+
+          this.categoryName = "Error obteniendo nombre de categoría";
         });
     },
 
     ...mapActions(["LibrosClientesPost"]),
     async comprarLibro(selectedBook) {
-  try {
-    const idCliente = +Cookies.get('idUsuario');
-    console.log('idCliente:', idCliente);
+      try {
+        const idCliente = +Cookies.get("idUsuario");
+        console.log("idCliente:", idCliente);
 
-    if(isNaN(idCliente)){
-      this.$router.push('/login');
-    }
+        if (isNaN(idCliente)) {
+          this.$router.push("/login");
+        }
 
-    const libroCliente = {
-      
-      idCliente: idCliente || this.$props.IdCliente,
-      idlibro: selectedBook.id,
-      nombreLibro: selectedBook.titulo,
-    };
-    console.log('libroCliente:', libroCliente);
-    this.$router.push('/checkout');
-    await this.LibrosClientesPost(libroCliente);
-
-    
-  } catch (error) {
-    console.error("Error al comprar el libro:", error);
-  }
-},
+        const libroCliente = {
+          idCliente: idCliente || this.$props.IdCliente,
+          idlibro: selectedBook.id,
+          nombreLibro: selectedBook.titulo,
+        };
+        console.log("libroCliente:", libroCliente);
+        this.$router.push("/checkout");
+        await this.LibrosClientesPost(libroCliente);
+      } catch (error) {
+        console.error("Error al comprar el libro:", error);
+      }
+    },
 
     async buscarLibro() {
       this.librosCards = await this.filterLibros(this.searchQuery);
@@ -253,9 +262,10 @@ export default {
 
     // Función para filtrar libros por categoría
     filtrarPorCategoria(categoriaId) {
-      this.librosCards = this.libro.filter(l => l.categoriaId === categoriaId)
+      this.librosCards = this.libro.filter(
+        (l) => l.categoriaId === categoriaId
+      );
     },
-
   },
 
   computed: {
@@ -287,7 +297,6 @@ export default {
   },
 };
 </script>
-
 
 <style scoped>
 .search-bar {
@@ -327,17 +336,21 @@ export default {
   cursor: pointer;
 }
 
-.v-btn.v-btn--is-elevated.v-btn--has-bg.theme--light.v-size--default.orange{
-  background-color:#80461b !important ;
+.v-btn.v-btn--is-elevated.v-btn--has-bg.theme--light.v-size--default.orange {
+  background-color: #80461b !important ;
 }
 .columnaTarjeta {
   padding-left: 20px;
 }
 
 .filtros {
-   display: flex; 
-   align-items: center; 
-   /* flex-direction: row; */
+  display: flex;
+  align-items: center;
+  /* flex-direction: row; */
+}
+.menuDobleFiltros{
+  display: flex;
+  flex-direction: row;
 }
 
 @media screen and (max-width: 400px) {
@@ -357,7 +370,6 @@ export default {
     flex-direction: column;
     margin-left: 0px;
   }
-  
 
   #orden {
     margin: 10px;
@@ -367,6 +379,17 @@ export default {
 @media (max-width: 1280px) {
   .v-row {
     cols: 6 !important;
+  }
+}
+@media (max-width: 1665px) {
+  .filtros {
+    margin-left: 2%;
+  }
+}
+
+@media (max-width: 1570px) {
+  .filtros {
+    margin-left: 2%;
   }
 }
 
@@ -380,34 +403,9 @@ export default {
   .menuProductos {
     margin-left: 0px !important;
   }
-}
-
-
-
-
-/* @media (max-width: 1400px) {
-  .filtros {
-    margin-left: 50px;
-  }
-  
-}
-
-@media (max-width: 600px) {
-  .popup-image {
-    height: 200px;
-  }
-
-  .popup-title {
-    font-size: 20px;
+  .menuDobleFiltros {
+    display: flex;
+    flex-direction: column;
   }
 }
-
-@media (max-width: 500px) {
-  #tarjeta {
-    width: 250px !important;
-  }
-  .columnaTarjeta {
-    padding-left: 0px !important;
-  }
-} */
 </style>

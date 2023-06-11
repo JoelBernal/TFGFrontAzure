@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app style="z-index: 2;">
     <v-app-bar
       style="display: flex; width: 100%; left: 0px; z-index: 9999"
       color="green"
@@ -220,7 +220,7 @@ export default {
 }
 
 .logoImgNavBar {
-  width: 65px;
+  width: 60px;
   margin-left: 10px;
 }
 
@@ -236,7 +236,7 @@ export default {
   cursor: pointer;
 }
 
-@media (max-width: 1330px) {
+@media (max-width: 1000px) {
   .menuBotones {
     display: none;
   }
