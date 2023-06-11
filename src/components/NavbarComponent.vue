@@ -71,7 +71,7 @@ export default {
           active: false,
         },
         {
-          title: "Usuarios",
+          title: "Clientes",
           path: "/usuarios",
           icon: "usuarios",
           active: false,
@@ -131,9 +131,9 @@ export default {
           if (i.title == "Usuario") {
             i.active = true;
           }
-          if (i.title == "Usuarios" && user.rol == "admin") {
+          if (i.title == "Clientes" && user.rol == "admin") {
             i.active = true;
-          } else if (i.title == "Usuarios" && user.rol !== "admin") {
+          } else if (i.title == "Clientes" && user.rol !== "admin") {
             i.active = false;
           }
           if (i.title == "ProductosAdmin" && user.rol == "admin") {

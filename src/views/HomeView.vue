@@ -5,7 +5,7 @@
 
     <div style="display: flex; justify-content: space-evenly; flex-direction: column;">
       <div style="display: flex; justify-content: center; margin-top: 10px; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 20px;">
-        <h1>LO MAS VENDIDO</h1>
+        <h1 style="text-align: center;">LO MAS VENDIDO</h1>
       </div>
       <div style="display: flex; text-decoration: solid;">
     
@@ -14,9 +14,9 @@
         <CardHome :cards="rows4" @click.native="products" style="width: 33%" /> 
       </div>
       <div style="display: flex; justify-content: center; margin-top: 10px; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 20px;">
-        <h1>TE PODRÍA INTERESAR</h1>
+        <h1 style="text-align: center;">TE PODRÍA INTERESAR</h1>
       </div>
-      <div style="margin-left: 25px;">
+      <div>
         <CardHome  :cards="rows3" @click.native="products" style="width: 100%; " />
       </div>
     </div>
