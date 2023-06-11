@@ -117,6 +117,14 @@ export default {
   methods: {
     ...mapActions(["registerUser"]),
     async register() {
+      // Verificación de campos vacíos
+      if (!this.nombreUser || !this.correo || !this.contrasenya || !this.confirmPassword) {
+        console.log("Todos los campos deben estar llenos");
+        this.snackbarMessage = "Todos los campos deben estar llenos";
+        this.snackbar = true;
+        return;
+      }
+
       if (this.contrasenya !== this.confirmPassword) {
         console.log("Las contraseñas no coinciden");
         this.snackbarMessage = "Las contraseñas no coinciden";
@@ -137,6 +145,7 @@ export default {
         this.correo = "";
         this.contrasenya = "";
         this.confirmPassword = "";
+        this.$router.push("/login");
       } catch (error) {
         console.error("Error al registrar al usuario:", error);
         this.snackbarMessage = "Error al registrar al usuario";
@@ -146,6 +155,7 @@ export default {
   },
 };
 </script>
+
 
 <style scoped>
 .fill-height {
@@ -179,7 +189,7 @@ export default {
 }
 
 #message {
-  color: #80461b !important;
+  color: #ffffff !important;
 }
 
 @media (max-width: 1100px) {
