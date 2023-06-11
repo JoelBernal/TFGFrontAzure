@@ -28,5 +28,6 @@ export default {
 <style>
   .divNavbar{
     position: fixed;
+    z-index: 2;
   }
 </style>
